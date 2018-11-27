@@ -22,14 +22,14 @@ eureka:
     lease-expiration-duration-in-seconds: 10
   client:
     serviceUrl:
-      defaultZone: http://admin:liuweijw@localhost:1001/eureka
+      defaultZone: http://admin:liuweijw@localhost:6001/eureka
 business:
   permission:
     enabled: true
   config:
     wxpay:
       certRootPath: E:/project/xxx/cert
-      notifyUrl: http://localhost:2003/pay/notify/result
+      notifyUrl: http://localhost:8003/pay/notify/result
 ---
 spring:
   profiles: untest
@@ -38,7 +38,7 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://admin:liuweijw@47.106.144.24:1001/eureka
+      defaultZone: http://admin:liuweijw@47.106.144.24:6001/eureka
 business:
   permission:
     enabled: true
@@ -54,7 +54,7 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://admin:liuweijw@localhost:1001/eureka
+      defaultZone: http://admin:liuweijw@localhost:6001/eureka
 business:
   permission:
     enabled: true

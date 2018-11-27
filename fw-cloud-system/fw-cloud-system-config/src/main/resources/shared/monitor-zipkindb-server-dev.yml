@@ -1,11 +1,11 @@
 server:
-  port: 1011
+  port: 6011
 
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: ENC(rC/X/8UBBH2bn9Tgfuu7aw==)
-    password: ENC(IVTzs5LDfVEsblAFWFgA9w==)
+    password: ENC(03nxkiAhmy8VCRvovXc2X8CaEblfHUsV)
     url: jdbc:mysql://localhost:3306/fw-cloud?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
 
 zipkin:

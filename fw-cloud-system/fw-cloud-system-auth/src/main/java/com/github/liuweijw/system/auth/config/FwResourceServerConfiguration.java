@@ -2,6 +2,7 @@ package com.github.liuweijw.system.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +12,11 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 
 import com.github.liuweijw.core.configuration.FwUrlsConfiguration;
 import com.github.liuweijw.system.auth.component.ajax.AjaxSecurityConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author liuweijw 认证服务器开放接口配置
@@ -31,7 +37,9 @@ public class FwResourceServerConfiguration extends WebSecurityConfigurerAdapter 
 	public void configure(HttpSecurity http) throws Exception {
 		ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http.formLogin()
 				// 可以通过授权登录进行访问
-				.loginPage("/auth/login")
+//				.loginPage("/auth/login")
+//				.loginProcessingUrl("/auth/signin")
+				.loginPage("http://127.0.0.1:4000/")
 				.loginProcessingUrl("/auth/signin")
 				.and()
 				.authorizeRequests();
@@ -45,8 +53,23 @@ public class FwResourceServerConfiguration extends WebSecurityConfigurerAdapter 
 				.authenticated()
 				.and()
 				.csrf()
-				.disable();
+				.disable()
+		.cors().configurationSource(corsConfiguration());
+
 		http.apply(ajaxSecurityConfigurer);
+	}
+
+
+	@Bean
+	UrlBasedCorsConfigurationSource corsConfiguration() {
+		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration corsConfiguration = new CorsConfiguration() ;
+		corsConfiguration.setAllowCredentials(true);
+		corsConfiguration.addAllowedOrigin("*");
+		corsConfiguration.addAllowedHeader("*");
+		corsConfiguration.addAllowedMethod("*");
+		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",corsConfiguration);
+		return urlBasedCorsConfigurationSource;
 	}
 
 }

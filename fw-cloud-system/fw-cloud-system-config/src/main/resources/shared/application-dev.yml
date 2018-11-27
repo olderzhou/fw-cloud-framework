@@ -1,12 +1,11 @@
-jasypt:
-  encryptor:
-    password: liuweijw
-
 server:
   tomcat:
     max-threads: 500
     min-spare-threads: 50
-
+jasypt:
+  encryptor:
+    password: liuweijw
+    algorithm: PBEWithMD5AndDES
 spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
