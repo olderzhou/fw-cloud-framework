@@ -81,6 +81,7 @@ urls:
   collects:
     - /mobile/**
     - /auth/**
+    - /oauth/token
     - /admin/code/*
     - /admin/api/info
     - /admin/api/userTree

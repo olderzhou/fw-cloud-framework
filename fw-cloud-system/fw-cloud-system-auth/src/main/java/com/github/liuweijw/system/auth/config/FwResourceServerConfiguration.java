@@ -37,10 +37,10 @@ public class FwResourceServerConfiguration extends WebSecurityConfigurerAdapter 
 	public void configure(HttpSecurity http) throws Exception {
 		ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http.formLogin()
 				// 可以通过授权登录进行访问
-//				.loginPage("/auth/login")
-//				.loginProcessingUrl("/auth/signin")
-				.loginPage("http://127.0.0.1:4000/")
+				.loginPage("/auth/login")
 				.loginProcessingUrl("/auth/signin")
+//				.loginPage("http://127.0.0.1:4000/")
+//				.loginProcessingUrl("/auth/signin")
 				.and()
 				.authorizeRequests();
 
